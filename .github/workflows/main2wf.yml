@@ -17,7 +17,7 @@ jobs:
 
     - name: Reusable Workflow main
       if: github.ref == 'refs/heads/main'
-      uses: parag04/workflowrepo/.github/workflows/reusable-workflow.yml@main
+      uses: parag04/workflowrepo/.github/workflows/reusable-workflow2.yml@main
       with:
         environment: "Production"
         Region: "us-east-2"
@@ -29,7 +29,7 @@ jobs:
 
     - name: Reusable Workflow quality
       if: github.ref == 'refs/heads/quality'
-      uses: parag04/workflowrepo/.github/workflows/reusable-workflow.yml@main
+      uses: parag04/workflowrepo/.github/workflows/reusable-workflow2.yml@main
       with:
         environment: "Quality"
         Region: "us-east-2"
@@ -41,7 +41,7 @@ jobs:
 
     - name: Reusable Workflow Sandbox
       if: github.ref == 'refs/heads/quality'
-      uses: parag04/workflowrepo/.github/workflows/reusable-workflow.yml@main
+      uses: parag04/workflowrepo/.github/workflows/reusable-workflow2.yml@main
       with:
         environment: "Sandbox"
         Region: "us-east-2"
