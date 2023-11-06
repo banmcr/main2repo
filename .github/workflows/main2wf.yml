@@ -30,7 +30,7 @@ jobs:
       CONNAPPCLIENTID: ${{ secrets.QAULITYCONNAPPCLIENTID }}
       CONNAPPCLIENTSECRET : ${{ secrets.QAULITYCONNAPPCLIENTSECRET }}
       CLIENTID : ${{ secrets.QAULITYCLIENTID }}
-      CLIENTSECRET : ${{ secrets.QAULITY  CLIENTSECRET }}
+      CLIENTSECRET : ${{ secrets.QAULITYCLIENTSECRET }}
 
   deploysandbox:
     if: github.ref == 'refs/heads/quality'
