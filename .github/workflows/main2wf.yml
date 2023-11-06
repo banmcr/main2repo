@@ -10,7 +10,7 @@ on:
 jobs:
   deployproduction:
     if: github.ref == 'refs/heads/main'  
-    uses: parag04/workflowrepo/.github/workflows/reusable-workflow2.yml@main
+    uses: banmcr/workflowrepo/.github/workflows/reusable-workflow2.yml@main
     with:
       environment: "Production"
       Region: "us-east-2"
@@ -22,7 +22,7 @@ jobs:
 
   deployquality:
     if: github.ref == 'refs/heads/quality'
-    uses: parag04/workflowrepo/.github/workflows/reusable-workflow2.yml@main
+    uses: banmcr/workflowrepo/.github/workflows/reusable-workflow2.yml@main
     with:
       environment: "Quality"
       Region: "us-east-2"
@@ -34,7 +34,7 @@ jobs:
 
   deploysandbox:
     if: github.ref == 'refs/heads/quality'
-    uses: parag04/workflowrepo/.github/workflows/reusable-workflow2.yml@main
+    uses: banmcr/workflowrepo/.github/workflows/reusable-workflow2.yml@main
     with:
       environment: "Sandbox"
       Region: "us-east-2"
