@@ -1,0 +1,52 @@
+name: Branch-wise Deployment
+
+on:
+  push:
+    branches:
+      - main
+      - sandbox
+      - quality
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v2
+
+    - name: Reusable Workflow main
+      if: github.ref == 'refs/heads/main'
+      uses: parag04/workflowrepo/.github/workflows/reusable-workflow.yml@main
+      with:
+        environment: "Production"
+        Region: "us-east-2"
+      secrets:
+        CONNAPPCLIENTID: ${{ secrets.PRDCONNAPPCLIENTID }}
+        CONNAPPCLIENTSECRET : ${{ secrets.PRDCONNAPPCLIENTSECRET }}
+        CLIENTID : ${{ secrets.PRDCLIENTID }}
+        CLIENTSECRET : ${{ secrets.PRDCLIENTSECRET }}
+
+    - name: Reusable Workflow quality
+      if: github.ref == 'refs/heads/quality'
+      uses: parag04/workflowrepo/.github/workflows/reusable-workflow.yml@main
+      with:
+        environment: "Quality"
+        Region: "us-east-2"
+      secrets:
+        CONNAPPCLIENTID: ${{ secrets.QAULITYCONNAPPCLIENTID }}
+        CONNAPPCLIENTSECRET : ${{ secrets.QAULITYCONNAPPCLIENTSECRET }}
+        CLIENTID : ${{ secrets.QAULITYCLIENTID }}
+        CLIENTSECRET : ${{ secrets.QAULITY  CLIENTSECRET }}
+
+    - name: Reusable Workflow Sandbox
+      if: github.ref == 'refs/heads/quality'
+      uses: parag04/workflowrepo/.github/workflows/reusable-workflow.yml@main
+      with:
+        environment: "Sandbox"
+        Region: "us-east-2"
+      secrets:
+        CONNAPPCLIENTID: ${{ secrets.SANDBOXCONNAPPCLIENTID }}
+        CONNAPPCLIENTSECRET : ${{ secrets.SANDBOXCONNAPPCLIENTSECRET }}
+        CLIENTID : ${{ secrets.SANDBOXCLIENTID }}
+        CLIENTSECRET : ${{ secrets.SANDBOXCLIENTSECRET }}
